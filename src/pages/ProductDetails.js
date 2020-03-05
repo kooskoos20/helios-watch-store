@@ -50,7 +50,7 @@ export default function (props) {
     return (
         <div className={classes.root}>
             <div className={classes.image_wrapper}>
-                <img src={product.image_url} height='600px' width='400px' />
+                <img src={product.image_url} height='600px' width='400px' alt={product.title}/>
             </div>
             <div className={classes.content_wrapper}>
                 <h1>{product.title}</h1>

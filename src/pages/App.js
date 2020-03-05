@@ -18,14 +18,17 @@ const useStyles = makeStyles({
 function App() {
   const [products, setProducts] = useState(undefined)
   useEffect(() => {
-    fetch("https://androidbootcamp.github.io/staticcontent/shoppingapplication/products_json.json")
-      .then(response => response.text())
-      .then(response => JSON.parse(response))
-      .then(response => {
-        setProducts(response)
-        localStorage.setItem("products",JSON.stringify(response))
-      })
-      .catch(err=> setProducts([]))
+    const products = JSON.parse(localStorage.getItem("products"))
+    if (!products)
+      fetch("https://androidbootcamp.github.io/staticcontent/shoppingapplication/products_json.json")
+        .then(response => response.text())
+        .then(response => JSON.parse(response))
+        .then(response => {
+          setProducts(response)
+          localStorage.setItem("products", JSON.stringify(response))
+        })
+        .catch(err => setProducts([]))
+    else setProducts(products)
   }, [])
 
   const classes = useStyles()
@@ -33,7 +36,7 @@ function App() {
     <>
       <Cover />
       <div className={classes.wrapper}>
-        <Products products={products}/>
+        <Products products={products} />
       </div>
       <Footer />
     </>
