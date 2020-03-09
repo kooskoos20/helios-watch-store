@@ -1,4 +1,6 @@
-Steps to run this project
+Note: Run all the commands inside the root directory of the app.
+
+Steps to run this app. 
 
 1. ### `npm install`
 
