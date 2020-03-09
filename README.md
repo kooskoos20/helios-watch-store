@@ -1,7 +1,7 @@
 Steps to run this app.
 1. Install node version 12.16.1 and npm version 6.13.4 
    
-#Run step 2 and 3 inside the root directory of the app.
+Note: Run step 2 and 3 inside the root directory of the app.
 
 2. ### `npm install`
 
