@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import Cover from '../homepage/Cover';
 import Footer from '../homepage/Footer';
 import Products from '../homepage/Products';
+import { getAllProducts } from '../repositories/repositories';
 
 
 const useStyles = makeStyles({
@@ -17,21 +18,13 @@ const useStyles = makeStyles({
 
 function App() {
   const [products, setProducts] = useState(undefined)
+  const [error, setError] = useState("")
   useEffect(() => {
-    const products = JSON.parse(localStorage.getItem("products"))
-    if (!products)
-      fetch("https://androidbootcamp.github.io/staticcontent/shoppingapplication/products_json.json")
-        .then(response => response.text())
-        .then(response => JSON.parse(response))
-        .then(response => {
-          setProducts(response)
-          localStorage.setItem("products", JSON.stringify(response))
-        })
-        .catch(err => setProducts([]))
-    else setProducts(products)
+    getAllProducts(setProducts, setError)
   }, [])
 
   const classes = useStyles()
+  if (error) return <div>{error}</div>
   return (
     <>
       <Cover />
