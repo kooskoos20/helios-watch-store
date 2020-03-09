@@ -39,7 +39,7 @@ export default function (props) {
         <div className={classes.product_wrapper}>
             <Link to={{pathname:`/product/${product.title}`}} className={classes.link}>
             <div className={classes.root}>
-                <img className={classes.product_image} src={product.image_url} alt={product.title} height='300px' width='168px' />
+                <img className={classes.product_image} src={product.image_url} alt={product.title} height='300px' width='222px' />
                 <div className={classes.product_name}>{product.title}</div>
             </div>
             </Link>
